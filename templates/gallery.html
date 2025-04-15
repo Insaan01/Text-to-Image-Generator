@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Gallery</title>
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .image-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .image-info {
+            margin-top: 10px;
+        }
+        .prompt {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .date {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ session['username'] }}'s Gallery</h1>
+    <h2>Your Last 5 Generations</h2>
+
+    <div class="gallery">
+        {% if images %}
+            {% for img in images %}
+                <div class="image-card">
+                    <img src="data:image/png;base64,{{ img.image_data }}" alt="{{ img.prompt }}">
+                    <div class="image-info">
+                        <div class="prompt">{{ img.prompt }}</div>
+                        <div class="date">Generated on: {{ img.generated_at }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No images generated yet.</p>
+        {% endif %}
+    </div>
+
+    <div class="actions">
+        <a href="{{ url_for('generate') }}" class="btn">Generate New Image</a>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+    </div>
+
+
+
+</body>
+</html>

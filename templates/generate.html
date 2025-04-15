@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Image</title>
+</head>
+<body>
+    <h1>Welcome, {{ session['username'] }}!</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <label>Enter your prompt: <input type="text" name="prompt" required></label><br>
+        <button type="submit">Generate Image</button>
+    </form>
+    <p><a href="{{ url_for('gallery') }}">View your gallery</a></p>
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>

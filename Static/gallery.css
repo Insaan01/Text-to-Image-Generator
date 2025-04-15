@@ -1,0 +1,89 @@
+/* Add this to your static/gallery.css file */
+
+/* Make sure body allows for absolutely positioned elements */
+body {
+    position: relative; /* Or ensure no other positioning conflicts */
+    padding-top: 80px; /* Add padding at the top to prevent content overlapping buttons */
+    /* Include your other body styles (background, color, font...) */
+    font-family: sans-serif;
+    background-color: #181818;
+    color: #eee;
+    margin: 0;
+    /* padding: 20px; --- Adjust padding if needed, top padding is important */
+}
+
+/* Container for top-right action buttons */
+.top-actions {
+    position: absolute; /* Position relative to the body */
+    /* Alternative: position: fixed; to keep buttons visible on scroll */
+    top: 20px;          /* Adjust distance from top */
+    right: 20px;         /* Adjust distance from right */
+    display: flex;       /* Layout buttons side-by-side */
+    gap: 10px;           /* Space between the buttons */
+    z-index: 1000;       /* Keep buttons on top of other content */
+}
+
+/* Base button styles (Combine/update with your existing .btn styles) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.95); /* Click feedback */
+}
+
+/* Specific styles for the Add (+) button */
+.btn-add {
+    background-color: #007bff; /* Blue */
+    font-size: 1.6em;      /* Make '+' larger */
+    font-weight: bold;
+    line-height: 1;        /* Ensure '+' is vertically centered */
+    padding: 5px 12px;     /* Fine-tune padding */
+    min-width: 40px;       /* Ensure minimum width */
+    text-align: center;
+}
+
+.btn-add:hover {
+    background-color: #0056b3;
+}
+
+/* Specific styles for the Logout button */
+.btn-logout {
+    background-color: #6c757d; /* Grey */
+    padding: 9px 15px;     /* Adjust padding slightly to match height if needed */
+}
+
+.btn-logout:hover {
+    background-color: #5a6268;
+}
+
+/* ---- Make sure to include your existing styles for ---- */
+/* h1, h2 (if using), .gallery, .image-card, .image-info, .prompt, .date etc. */
+/* Ensure you REMOVE any old CSS rule for .actions */
+
+h1 { /* Example: Ensure heading has margin */
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px; /* Space below heading */
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 0 20px 20px 20px; /* Adjust padding as needed */
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* ... include rest of your styles for .image-card etc. ... */

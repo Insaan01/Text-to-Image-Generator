@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generated Image</title>
+    <style>
+        .image-container {
+            max-width: 1024px;
+            margin: 20px auto;
+        }
+        .image-container img {
+            width: 100%;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Generated Image: "{{ prompt }}"</h1>
+
+    <div class="image-container">
+        <!-- Directly display the image -->
+        <img src="data:image/png;base64,{{ image_data }}" alt="Generated Image">
+    </div>
+
+    <div class="actions">
+        <a href="{{ url_for('generate') }}" class="btn">Generate Another</a>
+        <a href="{{ url_for('gallery') }}" class="btn">View Gallery</a>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+    </div>
+
+    <a href="data:image/png;base64,{{ image_data }}" download="generated_image.png" class="btn">
+    Download Image
+    </a>
+</body>
+</html>
