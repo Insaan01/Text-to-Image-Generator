@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* Define CSS variables (consistent with login/register) */
+:root {
+    --bg-color-dark: #121212;
+    --bg-color-medium: #1e1e1e;
+    --bg-color-light: #282828; /* For image frame */
+    --border-color: #444;
+    --text-color-primary: #e0e0e0;
+    --text-color-secondary: #aaaaaa;
+    --accent-color: #007bff;
+    --accent-color-hover: #0056b3;
+    --secondary-color: #6c757d; /* For secondary buttons */
+    --secondary-color-hover: #5a6268;
+    --font-family: 'Inter', sans-serif;
+}
+
+/* Basic reset and body styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color-dark);
+    background-image: linear-gradient(135deg, var(--bg-color-dark) 0%, #1a1a1a 100%);
+    color: var(--text-color-primary);
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
+    min-height: 100vh;
+    padding: 30px 20px; /* Add padding around content */
+}
+
+/* Main container for the result page */
+.result-container {
+    width: 100%;
+    max-width: 900px; /* Max width for the overall content */
+    text-align: center;
+    animation: fadeIn 0.5s ease-out forwards; /* Fade in animation */
+    opacity: 0;
+}
+
+/* General Heading style */
+.result-container h1 {
+    margin-bottom: 25px; /* Space below heading */
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.8em; /* Larger heading */
+}
+
+/* Image container styling (frame effect) */
+.image-container {
+    background-color: var(--bg-color-light); /* Background for the frame */
+    padding: 20px; /* Space between image and frame edge */
+    border-radius: 12px; /* Rounded corners for the frame */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 700px; /* Control max display width of the image container */
+    margin: 0 auto; /* Center container horizontally */
+    display: inline-block; /* Fit container to content */
+
+    /* Animation for the image container */
+    animation: scaleUp 0.6s 0.2s ease-out backwards; /* Start slightly delayed, scale up */
+    transform-origin: center center;
+}
+
+/* Image styling */
+.image-container img {
+    display: block; /* Remove extra space below image */
+    width: 100%; /* Image fills its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 6px; /* Slightly rounded corners for the image itself */
+}
+
+/* Prompt display style (BELOW image) */
+.prompt-display {
+    font-size: 1.1em;
+    color: var(--text-color-secondary);
+    margin-top: 20px; /* Space above prompt */
+    margin-bottom: 30px; /* Space below prompt */
+    font-style: italic;
+    max-width: 700px; /* Match image container width */
+    margin-left: auto; /* Center prompt text block */
+    margin-right: auto;
+    padding: 0 15px; /* Add padding if text gets long */
+}
+
+
+/* Actions container styling */
+.actions {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: center; /* Center buttons */
+    gap: 15px; /* Space between buttons */
+    margin-top: 20px; /* Space above buttons */
+}
+
+/* General button styling */
+.btn {
+    display: inline-flex; /* Use flex for icon + text alignment */
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap; /* Prevent text wrapping inside button */
+}
+
+.btn svg {
+    /* Ensure icon size is controlled */
+    width: 1em;
+    height: 1em;
+}
+
+
+.btn:active {
+    transform: scale(0.97); /* Click feedback */
+}
+
+/* Primary button (Download) */
+.btn-primary {
+    background-color: var(--accent-color);
+}
+.btn-primary:hover {
+    background-color: var(--accent-color-hover);
+}
+
+/* Secondary buttons (Generate Another, View Gallery) */
+.btn-secondary {
+    background-color: var(--secondary-color);
+}
+.btn-secondary:hover {
+    background-color: var(--secondary-color-hover);
+}
+
+/* Logout button */
+.btn-logout {
+    background-color: #444; /* Darker grey */
+}
+.btn-logout:hover {
+    background-color: #555;
+}
+
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

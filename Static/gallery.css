@@ -9,6 +9,7 @@ body {
     background-color: #181818;
     color: #eee;
     margin: 0;
+
     /* padding: 20px; --- Adjust padding if needed, top padding is important */
 }
 
@@ -86,4 +87,7 @@ h1 { /* Example: Ensure heading has margin */
     margin: 0 auto;
 }
 
+.AbZ {
+    align: center;
+}
 /* ... include rest of your styles for .image-card etc. ... */

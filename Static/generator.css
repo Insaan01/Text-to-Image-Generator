@@ -1,0 +1,231 @@
+/* Import a font (optional) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* Define CSS variables */
+:root {
+    --bg-color-dark: #121212;
+    --bg-color-medium: #1e1e1e;
+    --bg-color-light: #282828; /* Used for main content box */
+    --border-color: #444;
+    --text-color-primary: #e0e0e0;
+    --text-color-secondary: #aaaaaa;
+    --accent-color: #007bff;
+    --accent-color-hover: #0056b3;
+    --secondary-color: #6c757d;
+    --secondary-color-hover: #5a6268;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --font-family: 'Inter', sans-serif;
+}
+
+/* Basic reset and body styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color-dark);
+    background-image: linear-gradient(135deg, var(--bg-color-dark) 0%, #1a1a1a 100%);
+    color: var(--text-color-primary);
+    display: flex; /* Use flexbox to center main content */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 70px; /* Added padding to prevent overlap with fixed buttons */
+    position: relative; /* Needed for absolute positioning of children */
+    overflow-x: hidden; /* Prevent horizontal scrollbars */
+}
+
+/* Top-left actions container */
+.top-left-actions {
+    position: absolute; /* Position relative to body */
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Top-right actions container */
+.top-right-actions {
+    position: absolute; /* Position relative to body */
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+/* General button styling (base for all buttons) */
+.btn {
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
+    padding: 8px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+.btn svg {
+    width: 1em; /* Control icon size */
+    height: 1em;
+}
+.btn:active {
+    transform: scale(0.97); /* Click effect */
+}
+
+/* Style for the View Gallery button (top-left) */
+.btn-view-gallery {
+    background-color: var(--secondary-color);
+    padding: 8px 12px;
+}
+.btn-view-gallery:hover {
+    background-color: var(--secondary-color-hover);
+}
+/* Optional: Hide text on small screens */
+/* .btn-view-gallery span { display: none; } */
+/* @media (min-width: 600px) { .btn-view-gallery span { display: inline; } } */
+
+
+/* Style for the Logout button (top-right) */
+.btn-logout {
+    background-color: var(--secondary-color);
+    padding: 8px; /* Padding for icon button */
+    width: 38px; /* Fixed width */
+    height: 38px; /* Fixed height */
+    border-radius: 50%; /* Make it circular */
+}
+.btn-logout:hover {
+    background-color: var(--secondary-color-hover);
+}
+.btn-logout svg {
+     width: 1.2em; /* Adjust icon size */
+     height: 1.2em;
+}
+
+
+/* Main content box - This is crucial for centering */
+.main-content {
+    background-color: var(--bg-color-light);
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 90%; /* Responsive width */
+    max-width: 550px; /* Max width */
+    text-align: center; /* Center heading and button */
+    border: 1px solid var(--border-color);
+    /* Animation */
+    animation: fadeInSlideUp 0.6s ease-out forwards;
+    opacity: 0; /* Start hidden for animation */
+}
+
+.main-content h1 {
+    margin-top: 0; /* Remove default margin */
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.8em;
+}
+
+/* Flashed messages styling */
+.flashed-messages {
+    list-style: none;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: left; /* Keep text left-aligned */
+}
+/* Example styling for error messages */
+.flashed-messages .flash-error {
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid var(--error-color);
+    color: var(--error-color);
+}
+/* Example styling for success messages */
+.flashed-messages .flash-success {
+     background-color: rgba(40, 167, 69, 0.1);
+     border: 1px solid var(--success-color);
+     color: var(--success-color);
+}
+
+
+/* Form styling */
+form {
+    /* No specific form styles needed if groups handle spacing */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Align label and input left */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color-secondary);
+    font-size: 0.9em;
+}
+
+input[type="text"] {
+    width: 100%; /* Full width of container */
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: #2c2c2c; /* Dark input background */
+    color: var(--text-color-primary);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input[type="text"]:focus {
+    outline: none; /* Remove default outline */
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Focus glow */
+}
+/* Add placeholder styling */
+input[type="text"]::placeholder {
+    color: var(--text-color-secondary);
+    opacity: 0.7;
+}
+
+
+/* Generate button style */
+.btn-generate {
+    width: 100%; /* Full width button */
+    padding: 12px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px; /* Space above button */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+.btn-generate:hover {
+    background-color: var(--accent-color-hover);
+}
+.btn-generate:active {
+    transform: scale(0.98);
+}
+
+
+/* Removed Loading Indicator Styles */
+
+
+/* Keyframes for animations */
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Removed spin animation */
+
